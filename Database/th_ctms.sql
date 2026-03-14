@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2025 at 06:50 AM
+-- Generation Time: Mar 14, 2026 at 03:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `booked_seats` (
   `seat_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `booked_seats`
+--
+
+INSERT INTO `booked_seats` (`id`, `booking_id`, `seat_id`, `seat_price`) VALUES
+(105, 'BK69B575E4219EA', 2, 0.00);
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +58,13 @@ CREATE TABLE `bookings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `customer_id`, `showtime_id`, `status`, `payment_status`, `total_price`, `receipt_img`, `created_at`) VALUES
+('BK69B575E4219EA', 5, 13, 'pending', 'pending', 80.00, NULL, '2026-03-14 14:51:16');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +78,13 @@ CREATE TABLE `cinemarooms` (
   `room_type` enum('VIP','Regular','Premium') NOT NULL,
   `base_price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cinemarooms`
+--
+
+INSERT INTO `cinemarooms` (`id`, `name`, `capacity`, `room_type`, `base_price`) VALUES
+(11, 'Main hall', 10, 'Regular', 30.00);
 
 -- --------------------------------------------------------
 
@@ -86,10 +107,7 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`) VALUES
 (2, 'yohan', 'yyy@gmail.com', '$2y$10$TNeDSgw651flWFPa4xak5eaYZXhxYqCqp4Pa60KnSr9SKChJUiX.y'),
 (3, 'usma', 'uuu@gmail.com', '$2y$10$6NLLK.SXchW7D3bLdvpRV.dajLbKwCJKUi0/9g.tEpB.wbrVml7CC'),
 (4, 'gg', 'gg@gmail.com', '$2y$10$ZETwMeEn/ihQYHjkCmncL..jp9R8qITeyWrwO2106uZ3ASIUIX492'),
-(5, 'aa', 'aa@gmail.com', '$2y$10$KGd1gvxX07K4xe.Z8yZXQ.tY1pHSva9S2qYSoqxXRnYprM1BNBytW'),
-(6, 'bb', 'bb@gmail.com', '$2y$10$Z2pEhmmgdFo82SPKEKBOu.9JNFQQs89dH5pDk3BsXWdCKoS01Fl7i'),
-(7, 'aa', 'a@gmail.com', '$2y$10$wPT3mDZcpW2iux8ZJ4sWhu.Or6w/f7.L6P26jYq9ZOrr2KEW4LmBy'),
-(8, 'ff', 'ff@gmail.com', '$2y$10$I5H95/W8fibWqbWELl4w0euzxVBY45EWh9MRj9aPG0cHOUQsm42sC');
+(5, 'BB', 'bb@gmail.com', '$2y$10$37jcGi3ih4LdCK86CEJ2J.lDh0H4h0zDJsl.TXmJG/yPinQpJhUuS');
 
 -- --------------------------------------------------------
 
@@ -113,8 +131,9 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `emp_id`, `full_Name`, `phone`, `email`, `role`, `password`, `created_at`) VALUES
-(6, 'TH1111', 'ffffgg', '0928186282', 'hhh@gmail.com', 'Manager', '$2y$10$Q5T4in3V/XSrKQLiCy1uTOA5ZO.ziOI4MQJzMk54uUO65C6rAiFYO', '2024-12-15 03:59:25'),
-(8, 'TH1405', 'hhhhh', '0928186282', 'hh@gmail.com', 'Frontdeskofficer', '$2y$10$Q5T4in3V/XSrKQLiCy1uTOA5ZO.ziOI4MQJzMk54uUO65C6rAiFYO', '2024-12-20 02:17:56');
+(1, 'TH20001', 'John Manager', '0912345678', 'manager@email.com', 'Manager', '$2y$10$P18mVXP2SkjyMOvpSLamMOoFClVAHZ/KLB7RaxfahW37LPwgsJ1VC', '2026-03-14 21:00:00'),
+(2, 'TH30001', 'Jane Officer', '0923456789', 'officer@email.com', 'Frontdeskofficer', '$2y$10$jWXUuZZIuLqFDFR/XrZ/Qei8BixJOrQwBvYqxbu5W8bPtI3CtJHzW', '2026-03-14 21:00:00'),
+(3, 'TH20002', 'Bob Manager', '0934567890', 'bob@email.com', 'Manager', '$2y$10$P18mVXP2SkjyMOvpSLamMOoFClVAHZ/KLB7RaxfahW37LPwgsJ1VC', '2026-03-14 21:00:00');
 
 -- --------------------------------------------------------
 
@@ -160,10 +179,10 @@ CREATE TABLE `movies` (
 INSERT INTO `movies` (`id`, `title`, `cover_img`, `description`, `duration`, `release_date`, `youtube_link`, `status`) VALUES
 (1, 'The Matrix', '1600221180_matrix.jpg', 'Sample Movie', 2.5, '2024-12-06', '', 'active'),
 (2, 'redge', '1734242222_download.jpeg', 'edfgb', 2.5, '2024-12-18', 'https://www.youtube.com/watch?v=qi2XeXQWRx4', 'active'),
-(4, 'The Wolf of Wall Street', '1600221240_img 2.jpg', 'Sample 2', 3.15, '2020-09-17', '', 'inactive'),
-(5, 'Greatest Showman', '1600221900_images.jpg', 'Greatest Showman', 3.18, '2020-09-01', '', 'inactive'),
-(6, 'Jaws', '1600221900_download.jpg', 'Jaws', 2.36, '2020-07-22', '', 'inactive'),
-(7, 'Extractions', '1600222080_extraction-20200423134825-19294.jpg', 'Extractions', 2.5, '2024-10-01', '', 'inactive'),
+(4, 'The Wolf of Wall Street', '1600221240_img 2.jpg', 'Sample 2', 3.75, '2020-09-17', '', 'active'),
+(5, 'Greatest Showman', '1600221900_images.jpg', 'Greatest Showman', 3, '2020-09-01', '', 'active'),
+(6, 'Jaws', '1600221900_download.jpg', 'Jaws', 2.75, '2020-07-22', '', 'active'),
+(7, 'Extractions', '1600222080_extraction-20200423134825-19294.jpg', 'Extractions', 3, '2024-10-01', '', 'active'),
 (8, 'Avengers End Game 2', '1600222200_avengersendgame-20190417122917-18221.jpg', 'Avengers End Game', 3, '2024-10-17', '', 'inactive'),
 (9, 'White House Down', '1600237980_download (1).jpg', 'White House Down', 4, '2024-10-03', '', 'active'),
 (10, 'Uglies', '1727915880_download.jpeg', 'Uglies', 3.13, '2024-10-03', '', 'inactive');
@@ -182,6 +201,22 @@ CREATE TABLE `seats` (
   `is_booked` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `seats`
+--
+
+INSERT INTO `seats` (`id`, `room_id`, `seat_number`, `status`, `is_booked`) VALUES
+(1, 11, 'R1S1', 1, 0),
+(2, 11, 'R1S2', 1, 0),
+(3, 11, 'R1S3', 1, 0),
+(4, 11, 'R1S4', 0, 0),
+(5, 11, 'R1S5', 0, 0),
+(6, 11, 'R1S6', 0, 0),
+(7, 11, 'R1S7', 0, 0),
+(8, 11, 'R1S8', 0, 0),
+(9, 11, 'R1S9', 0, 0),
+(10, 11, 'R1S10', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -195,6 +230,13 @@ CREATE TABLE `showtime` (
   `start_time` datetime NOT NULL,
   `price` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `showtime`
+--
+
+INSERT INTO `showtime` (`id`, `movie_id`, `room_id`, `start_time`, `price`) VALUES
+(13, 2, 11, '2024-12-25 17:55:00', 50.00);
 
 -- --------------------------------------------------------
 
@@ -218,7 +260,8 @@ CREATE TABLE `th_admin` (
 --
 
 INSERT INTO `th_admin` (`id`, `emp_id`, `full_Name`, `phone`, `email`, `role`, `password`, `created_at`) VALUES
-(1, 'TH15015', 'admin admin', '0928186282', 'admin@email.com', 'admin', '$2y$10$Q5T4in3V/XSrKQLiCy1uTOA5ZO.ziOI4MQJzMk54uUO65C6rAiFYO', '2024-10-05 21:26:08');
+(1, 'TH15015', 'admin admin', '0928186282', 'admin@email.com', 'admin', '$2y$10$15NFOb3DPk1Cu2xURaySiu6rJcPQ.HePJkJT8w0gz4PqrHjufPhH2', '2024-10-05 21:26:08'),
+(2, 'TH15016', 'Super Admin', '0987654321', 'superadmin@email.com', 'Admin', '$2y$10$15NFOb3DPk1Cu2xURaySiu6rJcPQ.HePJkJT8w0gz4PqrHjufPhH2', '2026-03-14 21:00:00');
 
 --
 -- Indexes for dumped tables
@@ -310,19 +353,19 @@ ALTER TABLE `booked_seats`
 -- AUTO_INCREMENT for table `cinemarooms`
 --
 ALTER TABLE `cinemarooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `feedbacks`
@@ -340,7 +383,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `seats`
 --
 ALTER TABLE `seats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `showtime`
