@@ -53,18 +53,9 @@ This Cinema Ticket Management System allows customers to browse movies, book tic
 ## Database Demo Data
 
 ### Admin Users (TH_admin table)
-```sql
-INSERT INTO TH_admin (id, emp_id, full_Name, phone, email, role, password, created_at) VALUES
-(1, 'TH15015', 'Admin User', '0928186282', 'admin@email.com', 'Admin', '$2y$10$15NFOb3DPk1Cu2xURaySiu6rJcPQ.HePJkJT8w0gz4PqrHjufPhH2', '2024-10-05 12:26:08');
-```
 - Password: `Admin123!`
 
 ### Other Employees (employee table)
-```sql
-INSERT INTO employee (id, emp_id, full_Name, phone, email, role, password, created_at) VALUES
-(1, 'TH20001', 'John Manager', '0912345678', 'manager@email.com', 'Manager', '$2y$10$P18mVXP2SkjyMOvpSLamMOoFClVAHZ/KLB7RaxfahW37LPwgsJ1VC', '2026-03-14 12:00:00'),
-(2, 'TH30001', 'Jane Officer', '0923456789', 'officer@email.com', 'Frontdeskofficer', '$2y$10$jWXUuZZIuLqFDFR/XrZ/Qei8BixJOrQwBvYqxbu5W8bPtI3CtJHzW', '2026-03-14 12:00:00');
-```
 - Manager Password: `Manager123!`
 - Officer Password: `Officer123!`
 
