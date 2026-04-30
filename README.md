@@ -70,15 +70,15 @@ This Cinema Ticket Management System allows customers to browse movies, book tic
 1. Log in at `employees/login.php` with emp_id and password.
 2. Access role-specific dashboards.
 
-## Password Requirements
+# Password Requirements
 - At least 8 characters
 - One uppercase letter
 - One lowercase letter
 - One special character (e.g., !@#$%)
 
-## Credits
+# Credits
 Developed by Suraj Kumar Vishwakarma.  
 Visit [codeastro.com](https://codeastro.com) for more projects.
 
-## License
+# License
 This project is for educational purposes. Check with the developer for usage rights.
